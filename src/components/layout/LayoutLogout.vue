@@ -26,8 +26,9 @@ export default {
   width: 100%;
   cursor: pointer;
   color: white;
+  transition: .2s linear .2s;
 }
 .btn-logout:hover {
-  color: rgba(141, 141, 141, 0.959);
+  color: rgba(201, 201, 201, 0.959);
 }
 </style>

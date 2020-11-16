@@ -6,11 +6,13 @@
     <div class="container-fluid" v-if="isLogged">
       <div class="row">
         <div class="col-2 navigation-sidebar">
-          <h1 class="app-title">
-            <div class="container-logo">
-              <img class="logo" src="./assets/logo.png" alt="">
-            </div>
-            Expenses</h1>
+
+          <div class="container-logo">
+            <i class="fas fa-donate fa-3x"></i>
+            <h1 class="app-title">
+              Controle de Despesas</h1>
+          </div>
+
           <layout-navigation/>
         </div>
         <div class="col">
@@ -54,26 +56,22 @@ export default {
 
 <style lang="scss">
 #app {
-  background-color: var(--darker);
+  background-color: white;
   color: var(--light);
   min-height: 100vh;
 }
 .navigation-sidebar {
-  background-color: var(--dark-medium);
-}
-.app-title{
-  font-size: 20pt;
-  margin-top: 10px;
-  text-align: center;
-  display:flex;
-}
-.logo{
-  display: block;
-  margin: 0 5px
+    background: linear-gradient(326.54deg, #29b6d1 0%,var(--featured-dark) 100%) !important;
 }
 
 .container-logo{
-  width: 40px;
-  height: 40px;
+  display: flex;
+  padding: 14px 8px;
 }
+.app-title{
+  font-size: 14pt;
+  margin-top: 10px;
+  text-align: center;
+}
+
 </style>

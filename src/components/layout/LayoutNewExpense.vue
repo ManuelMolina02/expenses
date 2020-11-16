@@ -28,7 +28,18 @@
             <input type="text" v-model="form.description" class="form-control" required>
           </div>
 
-           <div class="form-group col-4">
+          <div class="form-group col-4">
+            <label for="">Tipo de Gasto:</label>
+              <select class="custom-select mr-sm-2" v-model="form.type" required>
+                <option selected></option>
+                <option value="Alimentação">Alimentação</option>
+                <option value="Contas/ Boletos">Contas/ Boletos</option>
+                <option value="Despesas de Casa">Despesas de Casa</option>
+                <option value="Farmácia">Farmácia</option>
+              </select>
+          </div>
+
+          <div class="form-group col-4">
             <label for="">Valor (R$):</label>
             <input type="text"  v-model="form.value" class="form-control" required>
           </div>
@@ -116,6 +127,7 @@ export default {
     showModal: false,
     form: {
       receipt: '',
+      type: '',
       value: '',
       description: ''
     }
@@ -207,10 +219,11 @@ export default {
 <style scoped  lang="scss">
 
   button.btn-outline-primary {
-      font-size:18px;
+    font-size:16px;
     border-radius: 15px;
-    border-color: rgba(141, 141, 141, 0.959) !important;
-     color: rgba(141, 141, 141, 0.959) !important;
+    border-color: rgba(221, 221, 221, 0.959) !important;
+    color: rgba(221, 221, 221, 0.959) !important;
+    transition: .2s linear .2s;
     &:hover {
       color: var(--white) !important;
       background-color: var(--featured) !important;

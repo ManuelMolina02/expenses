@@ -1,4 +1,6 @@
 <template>
+<div class="page-landing">
+
 <nav class="nav flex-column justify-content-between">
  <div>
 
@@ -22,6 +24,7 @@
  <layout-logout/>
 
 </nav>
+</div>
 </template>
 
 <script>
@@ -42,12 +45,15 @@ export default {
 </script>
 
 <style scoped  lang="scss">
+
   .nav {
-      height: calc(100vh - 50px );
-      width: calc(100% + 30px);
+      width: 14.2rem;
+      height: 35.9rem;
       margin-left:-15px;
   }
   .nav-link {
+    display: block;
+    border:none;
       color: var(--white);
       transition: .3s;
       &.active{

@@ -1,7 +1,7 @@
 <template>
 <!-- diretivas de condicional -->
   <div class="base-spinner fa-3x" v-if="visible">
-    <i class="fas fa-circle-notch fa-spin"></i>
+    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
   </div>
 </template>
 
@@ -40,7 +40,7 @@ export default {
   align-items: center;
   justify-content: center;
 
-  background-color: var(--darker);
+  background-color: rgb(255, 255, 255);
   color: var(--featured);
 
   z-index: 10000000;

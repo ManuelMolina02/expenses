@@ -1,40 +1,40 @@
 <template>
-  <div class="home">
-   <div class="row">
+<!-- Container layout -->
+<div class="layout-home">
 
-      <div class="col-6 home-box">
-        <small>Você gastou</small>
-        <div class="money" v-money-format="totals.totalSpent"/>
-        <small>
-          em 89 compras
-        </small>
-      </div>
-
-     <div class="col-6 home-box">
-       <small>Você gasta em média:</small>
-       <div class="money" v-money-format="totals.average"/>
+<!-- Cards -->
+  <div class="card-container">
+    <!-- Conteúdo do card -->
+    <div class="card-content">
+       <h1 class="title-card">Gasto Total Cadastrado foi de:</h1>
+       <p class="money" v-money-format="totals.totalSpent"/>
+       <h5>Em um total de {{ totals.count }} compras</h5>
      </div>
-
-     <div class="col-6 home-box">
-       <small>
-         O maior gasto foi de:
-         <p> {{ totals.biggest.description }} </p>
-       </small>
-       <div class="money" v-money-format="totals.biggest.value"/>
-       <small v-date-format="totals.biggest.createdAt"/>
-     </div>
-
-     <div class="col-6 home-box">
-       <small>
-         O menor gasto foi de:
-         <p> {{ totals.lowest.description }} </p>
-       </small>
-       <div class="money" v-money-format="totals.lowest.value"/>
-       <small v-date-format="totals.lowest.createdAt"/>
-     </div>
-
-   </div>
   </div>
+
+  <div class="card-container">
+    <div class="card-content">
+      <h1 class="title-card">A média de Gastos é de:</h1>
+      <p class="money" v-money-format="totals.average"/>
+    </div>
+  </div>
+
+  <div class="card-container">
+    <div class="card-content">
+      <h1 class="title-card">O maior gasto foi:</h1>
+      <p class="money" v-money-format="totals.biggest.value"/>
+    </div>
+  </div>
+
+  <div class="card-container">
+    <div class="card-content">
+      <h1 class="title-card">O menor gasto foi:</h1>
+      <p class="money" v-money-format="totals.lowest.value"/>
+    </div>
+  </div>
+
+</div>
+
 </template>
 
 <script>
@@ -45,14 +45,17 @@ export default {
   data: () => ({
     expenses: []
   }),
+
   created () {
     this.getData()
   },
+
   computed: {
     totals () {
       const { expenses: exp } = this
       const values = {
         totalSpent: 0,
+        count: 0,
         average: 0,
         biggest: {},
         lowest: {}
@@ -61,6 +64,8 @@ export default {
       if (exp.length) {
         values.totalSpent = exp.map(e => +e.value)
           .reduce((acc, cur) => acc + cur, 0)
+
+        values.count = exp.length
 
         values.average = values.totalSpent / exp.length
 
@@ -88,30 +93,51 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.home {
-  padding: 15px;
+//Container layout
+.layout-home {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap:2rem;
+  padding: 2rem;
+}
+//Conteiner dos cards
+.card-container{
+  border-radius: 16px;
+  padding: 10px;
+  text-align: center;
+  align-items: center;
+  background-color:#7159c1d7;
+  border: 2px solid var(--featured-dark);
+  color: rgba(255, 255, 255, 0.705);
+  transition: .2s linear .2s;
+  &:hover{
+    color: rgba(255, 255, 255, 0.89);
+    background-color: var(--featured);
 
-  .home-box {
-    width: 100%;
-    height: calc(50vh - 15px);
-    display: flex;
-    align-items: center;
-    font-size: 30pt;
-    justify-content: center;
-    flex-direction: column;
-    border: 1px solid var(--dark-medium);
-    small {
-      font-size: 1.6rem
-    }
-    .money {
-      color: var(--featured);
-    }
-    &:nth-child(2),&:nth-child(4) {
-      border-left: none;
-    }
-    &:nth-child(3), &:nth-child(4) {
-      border-top: none;
-    }
   }
 }
+
+//Título dos cards
+.card-container h1{
+  font-weight:bold;
+font-size: 1.2rem;
+}
+
+//Paragrafo dos cards
+.card-container p{
+  font-size: 1.8rem;
+  color: rgb(255, 255, 255);
+  border: 2px solid transparent;
+  border-radius: 16px;
+  background-color:#603dd38f;
+  width: 60%;
+  margin: .8rem auto;
+}
+
+//Sub-títulos dos cards
+.card-container h5{
+  font-size: 1rem;
+}
+
 </style>

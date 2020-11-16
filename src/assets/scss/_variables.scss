@@ -7,8 +7,8 @@ $light-medium: #ddd !important;
 $lighter: #ddd !important;
 $light: #fff !important;
 
-$featured: #e91e63;
-$featured-dark: #aa023a;
+$featured: #7159c1;
+$featured-dark: darkslateblue;
 $featured-dark-act:rgba(233, 30, 98, 0.555);
 
 :root {
@@ -24,18 +24,3 @@ $featured-dark-act:rgba(233, 30, 98, 0.555);
     --featured-dark:#{$featured-dark};
     --featured-dark-act:#{$featured-dark-act};
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
