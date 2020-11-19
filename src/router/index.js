@@ -14,6 +14,14 @@ const router = new Router({
       component: () => import(/* webpackChunkName: "about" */ '../pages/home/Home')
     },
     {
+      path: '/charts',
+      name: 'charts',
+      meta: {
+        icon: 'chart-bar', title: 'Charts'
+      },
+      component: () => import(/* webpackChunkName: "about" */ '../pages/charts/Chart')
+    },
+    {
       path: '/expenses-list',
       name: '/expenses-list',
       meta: {

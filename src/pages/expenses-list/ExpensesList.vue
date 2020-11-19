@@ -74,9 +74,6 @@ import groupBy from 'lodash.groupby'
 
 export default {
   name: 'ExpensesList',
-  props: {
-    data: { type: Object, required: true }
-  },
   data: () => ({
     expenses: [],
     activeMonth: {}
@@ -184,13 +181,14 @@ export default {
   display: block;
   min-width: 120px;
   border: none;
-  background-color: #7159c1;
+   background-color: #8b76cfbd;
   color: white;
   border-radius: 25px;
   margin: auto;
   padding: 7px;
+  transition: .2s linear .2s;
       &:hover {
-      background-color: var(--featured-dark);
+      background-color: #8b76cff6;
     }
 }
 
@@ -218,7 +216,7 @@ export default {
 
 //cabeçalho
 .content-table thead tr {
-  background-color:var(--featured);
+  background-color: #8b76cfe1;
   color: white;
   text-align: left;
 
@@ -233,17 +231,51 @@ export default {
 //conteúdo do corpo da tabela
 .content-table tbody tr {
   border-bottom: 1px solid rgb(175, 175, 175);
-  background-color:#d6dce2;
+  background-color:#d6dce2c9;
 }
 
 //selecionar filhos impares da tabela
 .content-table tbody tr:nth-of-type(even){
-  background-color:rgb(231, 227, 227);
+  background-color:rgba(231, 227, 227, 0.76);
 }
 
 //selecionar ultimo filho da tabela
 .content-table tbody tr:last-of-type{
   border-bottom: 2px solid rgb(105, 105, 105);
+}
+
+//animation
+
+div .months-navigation{
+  overflow: hidden;
+  animation: top 0.4s;
+}
+
+div .container-group{
+  overflow: hidden;
+  animation: move 0.8s;
+}
+
+@keyframes move {
+  from {
+    opacity: 0;
+    transform: translateX(35%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+@keyframes top {
+  from {
+    opacity: 0;
+    transform: translateY(-15%)
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 </style>

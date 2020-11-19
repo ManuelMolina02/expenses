@@ -41,7 +41,7 @@
 
           <div class="form-group col-4">
             <label for="">Valor (R$):</label>
-            <input type="text"  v-model="form.value" class="form-control" required>
+            <input type="number"  v-model="form.value" class="form-control" placeholder="(example: 100.00)" required>
           </div>
 
           <div class="form-group flex-column col-12 d-flex align-items-center">
@@ -235,5 +235,21 @@ export default {
   .modal{
     color: var(--darker);
   }
+
+  div.modal {
+  overflow: hidden;
+  animation: fade 0.8s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 
 </style>
