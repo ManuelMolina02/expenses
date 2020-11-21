@@ -3,12 +3,12 @@ export default {
   extends: Line,
   mounted () {
     this.renderChart({
-      labels: ['Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+      labels: ['Setembro', 'Outubro', 'Novembro'],
       datasets: [
         {
           label: 'Valor Gasto',
           backgroundColor: 'rgba(126, 114, 202, 0.712)',
-          data: [550, 390, 410, 420, 306, 284.5, 650]
+          data: [1129.0, 979.0, 1132.0]
         }
       ]
     }, { responsive: true, maintainAspectRatio: false })

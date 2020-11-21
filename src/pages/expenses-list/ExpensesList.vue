@@ -10,16 +10,16 @@
         v-for="(month, i) in groupedMonths"
         :class="{active: month.month === activeMonth.month}">
 
-        <!-- titulo da barra -->
+        <!-- Título da barra -->
         <div class="month-label">{{ month.month }}</div>
-        <!-- valor da barra -->
+        <!-- Valor da barra -->
         <div class="value-label" v-money-format="month.total"/>
       </div>
     </div>
     <!-- Conteúdo da página -->
     <div class="container-group">
-    <!-- template  alternado -->
 
+    <!-- Template  alternado -->
       <div class="container">
         <!-- Se não existir registro -->
         <div v-if="activeMonth.data && !activeMonth.data.length">
@@ -41,14 +41,14 @@
 
             <!-- Corpo da tabela -->
              <tbody>
-                 <tr :key="data" :data="item" v-for="data in activeMonth.data">
+                 <tr :key="index" v-for="(data,index) in activeMonth.data">
                    <td> {{data.description}} </td>
-                   <td> {{ data.type }} </td>
+                   <td> {{data.type }} </td>
                    <td>
                      <button
                        v-if="data.receipt"
-                       @click="openReceipt()"
                        class="btn-receipt"
+                       @click="openReceipt ()"
                      >
                       <i class="fa fa-paperclip"></i>
                        Ver comprovante
@@ -121,6 +121,9 @@ export default {
     }
   },
   methods: {
+    openReceipt () {
+      window.open('https://firebasestorage.googleapis.com/v0/b/expenses-24e37.appspot.com/o/HTumEFacUAdokg0OorMuapckMkp1%2FDesenho%20sem%20t%C3%ADtulo%20(7)-1605959961390.png?alt=media&token=deaa79c9-75e6-4405-b496-a5075da3244f', '_blank')
+    },
     getData () {
       const ref = this.$firebase.database().ref(`/${window.uid}`)
       ref.on('value', snapshot => {
@@ -130,15 +133,13 @@ export default {
     },
     setActiveMonth (month = null) {
       this.activeMonth = month || this.groupedMonths[this.groupedMonths.length - 1]
-    },
-    openReceipt () {
-      window.open('https://firebasestorage.googleapis.com/v0/b/expenses-24e37.appspot.com/o/HTumEFacUAdokg0OorMuapckMkp1%2FDesenho%20sem%20t%C3%ADtulo-1605205460474.svg?alt=media&token=8e04b2f9-c749-4168-a4a5-6f96d9b6dc76', '_blank')
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+/* ----------- BARRA DE NAVEGAÇÃO DO TOPO ----------- */
 
 /* Barra de navegação dos meses */
 .months-navigation {
@@ -153,6 +154,7 @@ export default {
     cursor: pointer;
     transition: .4s;
     text-align: center;
+
     &:hover {
       background-color: var(--featured);
     }
@@ -170,18 +172,70 @@ export default {
   }
 }
 
-//template alternado
+//Template alternado
 .container-group {
   margin-left: -15px;
   overflow: hidden auto;
 }
 
-//botão de anexos na tabela
+/* ----------- TABELA ----------- */
+//Corpo da tabela
+.content-table {
+  border-collapse: collapse;
+  margin: 25px auto;
+  font-size: .9em;
+  min-width: 800px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+}
+
+//Cabeçalho da tabela
+.content-table thead tr {
+  background-color: #8b76cfe1;
+  color: white;
+  text-align: left;
+}
+
+//Enquadramento de conteúdo
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+}
+
+//1ª Coluna  coluna de dados
+.content-table td:first-child {
+  width: 240px;
+  color:rgb(50, 50, 50);
+}
+
+//2ª Coluna de dados
+.content-table td {
+  width: 190px;
+  color:rgb(50, 50, 50);
+}
+
+//Configurações das Linhas
+.content-table tbody tr {
+  border-bottom: 1px solid rgb(175, 175, 175);
+  background-color:#d6dce2c9;
+}
+
+//Configurações das Linhas (Impares)
+.content-table tbody tr:nth-of-type(even){
+  background-color:rgba(231, 227, 227, 0.76);
+}
+
+//Selecionar último filho da tabela
+.content-table tbody tr:last-of-type{
+  border-bottom: 2px solid rgb(105, 105, 105);
+}
+
+//Botão de anexos na tabela
 .btn-receipt {
   display: block;
   min-width: 120px;
   border: none;
-   background-color: #8b76cfbd;
+  background-color: #8b76cfbd;
   color: white;
   border-radius: 25px;
   margin: auto;
@@ -192,65 +246,14 @@ export default {
     }
 }
 
-//corpo da tabela
-.content-table {
-  border-collapse: collapse;
-  margin: 25px auto;
-  font-size: .9em;
-  min-width: 800px;
-  border-radius: 5px 5px 0 0;
-  overflow: hidden;
-}
-
-//primeira coluna de dados
-.content-table td:first-child {
-  width: 240px;
-  color:rgb(50, 50, 50);
-}
-
-//colunas de dados
-.content-table td {
-  width: 190px;
-  color:rgb(50, 50, 50);
-}
-
-//cabeçalho
-.content-table thead tr {
-  background-color: #8b76cfe1;
-  color: white;
-  text-align: left;
-
-}
-
-//enquadramento de conteúdo
-.content-table th,
-.content-table td {
-  padding: 12px 15px;
-}
-
-//conteúdo do corpo da tabela
-.content-table tbody tr {
-  border-bottom: 1px solid rgb(175, 175, 175);
-  background-color:#d6dce2c9;
-}
-
-//selecionar filhos impares da tabela
-.content-table tbody tr:nth-of-type(even){
-  background-color:rgba(231, 227, 227, 0.76);
-}
-
-//selecionar ultimo filho da tabela
-.content-table tbody tr:last-of-type{
-  border-bottom: 2px solid rgb(105, 105, 105);
-}
-
-//animation
-
+/* ----------- ANIMATION ----------- */
+//Animação menu de navegação
 div .months-navigation{
   overflow: hidden;
   animation: top 0.4s;
 }
 
+//Animação conteúdo do container
 div .container-group{
   overflow: hidden;
   animation: move 0.8s;

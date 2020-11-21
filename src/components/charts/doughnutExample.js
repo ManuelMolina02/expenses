@@ -13,7 +13,7 @@ export default {
             '#00D8FF',
             '#EA4335'
           ],
-          data: [40, 20, 80, 10]
+          data: [8, 7, 3, 1]
         }
       ]
     }, { responsive: true, maintainAspectRatio: false })
