@@ -7,7 +7,7 @@
       </div>
 
       <div class="form-wrapper">
-        <form>
+        <form autocomplete="off" no-control= "no-cache">
           <div class="input-block">
             <label for="login-email">
               <i class="fa fa-envelope "></i>
