@@ -1,4 +1,4 @@
-#💲Controle de Despesas
+# 💲Controle de Despesas
 
 Controle de Despesas é um projeto que desenvolvi baseado em um canal do YouTube - [video aulas](https://www.youtube.com/watch?v=g5CuiTpx6Sg&list=PL7SyCwLzd5jt7zcDoBjGt7v7zViBt7WgA&ab_channel=ArthurOliveira).
 Se trata de uma SPA (Single Page Application) utilizando o Vue.js e o Firebase para inserir gastos
@@ -59,4 +59,4 @@ No windows é preciso fazer o procedimento na mão:
 - Copie o conteúdo de dentro da pasta /dist para dentro da pasta /deploy/public;
 - Execute `firebase deploy` dentro da pasta /deploy.
 
-Feito por Manuel Molina
+## Feito por Manuel Molina 👽
