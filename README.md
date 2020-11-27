@@ -1,6 +1,6 @@
 # Controle de Despesas
 
-Controle de Despesas é um projeto que desenvolvi baseado em um canal do YouTube - ([video aulas] https://www.youtube.com/watch?v=g5CuiTpx6Sg&list=PL7SyCwLzd5jt7zcDoBjGt7v7zViBt7WgA&ab_channel=ArthurOliveira).
+Controle de Despesas é um projeto que desenvolvi baseado em um canal do YouTube - [video aulas](https://www.youtube.com/watch?v=g5CuiTpx6Sg&list=PL7SyCwLzd5jt7zcDoBjGt7v7zViBt7WgA&ab_channel=ArthurOliveira).
 Se trata de uma SPA (Single Page Application) utilizando o Vue.js e o Firebase para inserir gastos
 pessoais e ter um controle dos mesmos. Os dados são salvos no realtime database do Firebase e utilizo
 tambem o storage para salvar a imagem do comprovante caso o usuário queira inserí-la.
